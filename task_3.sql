@@ -4,7 +4,7 @@ select
     Customer_id,
     TotalSpending,
     case
-        when TotalSpending > ROUND(AVG(TotalSpending) OVER (), 2) then 'High'
+        when TotalSpending > ROUND(AVG(TotalSpending) OVER (), 2)*1.05 then 'High'
         when TotalSpending > ROUND(AVG(TotalSpending) OVER (), 2)*0.95 then 'Medium'
         else 'Low'
     end as SpendingSegment
@@ -13,7 +13,8 @@ from (select
         round(SUM(Total), 2) as TotalSpending
       from walmart
       group by Customer_id
-    ) as customer_spendingc ;
+    ) as customer_spendingc 
+    order by TotalSpending desc;
 
 
 
