@@ -1,21 +1,19 @@
-WITH customer_totals AS (
-  SELECT 
-    `customer ID`, 
-    round(SUM(total),2) AS total
-  FROM walmart
-  GROUP BY `customer ID`
-  ORDER BY `customer ID`
-),
-ranked_customers AS (
-  SELECT *,
-         NTILE(3) OVER (ORDER BY total) AS ntile_rank
-  FROM customer_totals
-)
-    
-select *,
-case
-	when ntile_rank = 1 then 'low'
-	when ntile_rank = 2 then 'mid'
-	else 'high'
-end as category
-from ranked_customers;
+/*Walmart wants to segment customers based on their average spending behavior. 
+Classify customers into threetiers: High, Medium, and Low spenders based on their total purchase amounts.*/
+select
+    Customer_id,
+    TotalSpending,
+    case
+        when TotalSpending > ROUND(AVG(TotalSpending) OVER (), 2) then 'High'
+        when TotalSpending > ROUND(AVG(TotalSpending) OVER (), 2)*0.95 then 'Medium'
+        else 'Low'
+    end as SpendingSegment
+from (select
+        `Customer ID` as Customer_id,
+        round(SUM(Total), 2) as TotalSpending
+      from walmart
+      group by Customer_id
+    ) as customer_spendingc ;
+
+
+

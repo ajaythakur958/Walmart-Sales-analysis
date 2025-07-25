@@ -1,5 +1,9 @@
-select `customer ID` , round(sum(total)) as amount_spends
+/*Walmart wants to reward its top 5 customers 
+who have generated the most sales Revenue*/
+select 
+	`customer ID` as Customer_id, 
+    round(sum(total)) as Totoal_Amount_Spends
 from walmart
-GROUP BY `customer ID`
-order by amount_spends desc
-limit 5;
+GROUP BY Customer_id
+order by Totoal_Amount_Spends desc
+limit 5 ;
