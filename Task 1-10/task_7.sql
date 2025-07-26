@@ -1,5 +1,6 @@
 /*Walmart wants to know which product lines are 
 preferred by different customer types(Member vs. Normal)*/
+USE walmart_db;
 with customer_purchases as (
 	select 
 		`customer type` as Customer_Type ,

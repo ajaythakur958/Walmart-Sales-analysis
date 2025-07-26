@@ -1,5 +1,6 @@
 /* Analyzing the total sales for each branch and comparing 
 the growth rate across months and finding the top performer.*/
+USE walmart_db;
 with monthly_sales as (
 	SELECT 
     branch,
@@ -15,7 +16,6 @@ select distinct Branch,
 	round(AVG(growth_rate) over (PARTITION BY branch), 2) as Overall_Growth 
 from (
 		select branch, month_num, month_name, total_sales,
-			LAG(total_sales) OVER (PARTITION BY branch ORDER BY month_num) AS previous_month_sales,
 			ROUND(
 			(total_sales - LAG(total_sales) OVER (PARTITION BY branch ORDER BY month_num)) 
 			/ NULLIF(LAG(total_sales) OVER (PARTITION BY branch ORDER BY month_num), 0) * 100, 

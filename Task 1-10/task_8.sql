@@ -1,5 +1,6 @@
 /*Walmart needs to identify customers who made repeat  purchases 
 within a specific time frame (e.g., within 30days)*/
+USE walmart_db;
 with Grouped_time_frame as (
 	select 
 		`customer id` as customer_id, `Invoice ID` as invoice_id,

@@ -1,5 +1,6 @@
 /*Walmart wants to reward its top 5 customers 
 who have generated the most sales Revenue*/
+USE walmart_db;
 select 
 	`customer ID` as Customer_id, 
     round(sum(total)) as Totoal_Amount_Spends

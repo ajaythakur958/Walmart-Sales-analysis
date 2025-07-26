@@ -1,5 +1,6 @@
 /*Walmart needs to determine the most popular payment method 
 in each city to tailor marketing strategies.*/
+USE walmart_db;
 select city, payment, payment_count
 from (
 	select 

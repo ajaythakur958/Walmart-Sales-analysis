@@ -1,6 +1,7 @@
 /*Walmart suspects that some transactions have unusually high or low sales 
 compared to the average for the product line. Identify these anomalies.*/
 USE walmart_db;
+USE walmart_db;
 WITH product_line_avg AS (
   SELECT 
 	`Product line` as Product_Line, 
