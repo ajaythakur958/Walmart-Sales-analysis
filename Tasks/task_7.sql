@@ -12,7 +12,7 @@ with customer_purchases as (
 )
 
 select 
-	Customer_Type, Product_Line, total_purchases
+	*
 from (
     select *,
         rank() over (partition by Customer_Type  order by total_purchases desc ) as rnk

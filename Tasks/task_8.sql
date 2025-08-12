@@ -5,8 +5,7 @@ with Grouped_time_frame as (
 	select 
 		`customer id` as customer_id, `Invoice ID` as invoice_id,
 		str_to_date(`Date`, '%d-%m-%Y') as purchase_date,
-		floor( datediff(str_to_date(`Date`, '%d-%m-%Y') ,
-        (select min(str_to_date(`Date`, '%d-%m-%Y')) from walmart))/30) as Grouped_30days_buckets
+		floor( datediff( str_to_date(`Date`, '%d-%m-%Y') ,(select min(str_to_date(`Date`, '%d-%m-%Y')) from walmart) )/30) as Grouped_30days_buckets
     from walmart
     )
 

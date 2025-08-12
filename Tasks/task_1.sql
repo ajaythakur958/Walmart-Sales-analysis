@@ -12,7 +12,7 @@ with monthly_sales as (
 	ORDER BY branch, month_num
 )
 
-select distinct Branch,
+select distinct *,
 	round(AVG(growth_rate) over (PARTITION BY branch), 2) as Overall_Growth 
 from (
 		select branch, month_num, month_name, total_sales,

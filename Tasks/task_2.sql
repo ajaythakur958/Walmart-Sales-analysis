@@ -1,6 +1,7 @@
 /*Walmart needs to determine which product line contributes the 
 highest profit to each branch.The profit margin should be calculated 
 based on the difference between the gross income and cost of goods sold.*/
+select * from walmart ;
 USE walmart_db;
 with product_gross_income as (
 	select 

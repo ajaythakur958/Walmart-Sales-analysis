@@ -6,7 +6,7 @@ from (
 	select 
 		city, payment, 
 		count(*) as payment_count,
-		ROW_NUMBER() over (PARTITION BY city ORDER BY count(*) desc) as ranking
+		RANK() over (PARTITION BY city ORDER BY count(*) desc) as ranking
 	from walmart
 	group by city, payment
 	order by city, payment_count desc

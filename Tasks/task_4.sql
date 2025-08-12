@@ -1,7 +1,6 @@
 /*Walmart suspects that some transactions have unusually high or low sales 
 compared to the average for the product line. Identify these anomalies.*/
 USE walmart_db;
-USE walmart_db;
 WITH product_line_avg AS (
   SELECT 
 	`Product line` as Product_Line, 
@@ -18,6 +17,6 @@ select
 		else 'Normal'
 	end as Anomalies
 from walmart w
-join product_line_avg a 
-on w.`Product line` = a.Product_Line 
+join product_line_avg a
+on w.`Product line` = a.Product_Line
 order by Total_Spends desc;

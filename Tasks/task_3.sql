@@ -14,7 +14,7 @@ from (select
         round(SUM(Total), 2) as TotalSpending
       from walmart
       group by Customer_id
-    ) as customer_spendingc 
+    ) as customer_spendings
     order by TotalSpending desc;
 
 
